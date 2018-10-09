@@ -8,21 +8,16 @@
 
     function foundItemsDirective() {
         var ddo = {
+            restrict: 'E',
+		    templateUrl: 'foundItems.html',
             scope: {
                 // restrict: 'E',
-                items: '<',
-                onRemove: '&'
-            },
-            controller: foundItemsDirectiveController,
-            controllerAs: 'foundDir',
-            bindToController: true,
-            templateUrl: 'foundItems.html'
+                foundItems: '<',
+                onRemove: '&',
+                isEmpty: '<'
+            }
         };
         return ddo;
-    }
-
-    function foundItemsDirectiveController() {
-
     }
 
     NarrowItDownController.$inject = ['MenuSearchService'];
@@ -33,15 +28,24 @@
 
         search.getMatchedMenuItems = function (searchTerm) {
             // console.log(searchTerm);
-            var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
-            // ctrl.found = [];
-            promise.then(function (response) {
-                search.found = response;
-                // console.log(this);
-                // console.log(ctrl.found);
-            }).catch(function (error) {
-                console.log("error coming back");
-            })
+            search.empty = searchTerm == ("" || undefined)? true : false;
+            // search.found = [];
+            console.log(search.empty);
+
+            if (!search.empty) {
+                var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+                    // ctrl.found = [];
+                search.found = [];
+                promise.then(function (response) {
+                    search.found = response;
+                    console.log(search.found.length);
+                    search.empty = search.found.length > 0 ? false : true;
+                    console.log(search.empty);
+                        // console.log(ctrl.found);
+                }).catch(function (error) {
+                    console.log("error coming back");
+                })
+            }
         };
 
         search.removeItem = function(index) {

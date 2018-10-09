@@ -1,13 +1,14 @@
 <div class="col-md-12 col-lg-12 col-sm-12">
 <h3>List of found items</h3>
 <ol>
-    <li ng-repeat="item in search.found">
+    <li ng-repeat="item in foundItems">
         {{item.name}} <br>
         {{item.short_name}} <br>
         {{item.description}} <br>
-        <button ng-click="search.removeItem({index: $index});">
+        <button ng-click="onRemove({index: $index});">
             Don't want this one!
         </button>
     </li>
 </ol>
+<p ng-if="isEmpty">Nothing found</p>
 </div>
