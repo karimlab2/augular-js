@@ -34,8 +34,8 @@
 
             if (!search.empty) {
                 var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
-                    // ctrl.found = [];
                 search.found = [];
+                console.log(search.found);
                 promise.then(function (response) {
                     search.found = response;
                     console.log(search.found.length);
@@ -46,6 +46,7 @@
                     console.log("error coming back");
                 })
             }
+
         };
 
         search.removeItem = function(index) {
@@ -57,8 +58,6 @@
     function MenuSearchService($http) {
         var service = this;
 
-        var foundItems = [];
-
         service.getMatchedMenuItems = function(searchTerm) {
             return $http({
                 method: "GET",
@@ -67,16 +66,21 @@
                 //     category: searchTerm
                 // }
             }).then(function(result) {
+                var foundItems = [];
+                console.log(foundItems.length);
                 var temp = result.data.menu_items;
-                for(var i = 0; i < temp.length; i++) {
-                    //found
-                    // console.log(temp[i].description);
-                    if (temp[i].description.indexOf(searchTerm.toLowerCase()) != -1) {
-                        foundItems.push(temp[i]);
+                if (searchTerm != undefined && searchTerm != "") {
+                    for(var i = 0; i < temp.length; i++) {
+                        //found
+                        // console.log(temp[i].description);
+                        if (temp[i].description.indexOf(searchTerm.toLowerCase()) != -1) {
+                            foundItems.push(temp[i]);
 
+                        }
                     }
                 }
-                console.log(foundItems);
+
+                console.log(foundItems.length);
                 return foundItems;
             }).catch(function (error) {
                 console.log("get request failed");
