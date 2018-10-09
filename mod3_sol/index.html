@@ -24,7 +24,7 @@
         <ol>
             <li ng-repeat="item in search.found">
                 {{item.name}} {{item.short_name}} {{item.description}}
-                <button ng-click="search.onRemove({index: $index});">
+                <button ng-click="search.removeItem({index: $index});">
                     Don't want this one!
                 </button>
             </li>
