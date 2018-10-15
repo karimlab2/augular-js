@@ -31,6 +31,23 @@
                     });
                 }]
             }
+        })
+
+        .state('items', {
+            url: '/items/{cat_id}',
+            templateUrl: 'templates/items_list.template.html',
+            controller: 'itemsController as itemCtrl',
+            resolve: {
+                items: ['MenuDataService', '$stateParams',
+                    function(MenuDataService, $stateParams) {
+                        return MenuDataService.getItemsForCategory($stateParams.cat_id)
+                        .then(function(response) {
+                            console.log(response.data.menu_items);
+                            return response.data.menu_items;
+                        }
+                    )}
+                ]
+            }
         });
     }
 
