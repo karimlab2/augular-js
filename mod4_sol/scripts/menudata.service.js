@@ -14,14 +14,14 @@
             return $http({
                 method: "GET",
                 url: "https://davids-restaurant.herokuapp.com/categories.json"
+            })
+            .then(function(result) {
+                // console.log(result.data);
+                return result;
+            })
+            .catch(function (error) {
+                console.log("get request on all category failed");
             });
-            // .then(function(result) {
-            //     console.log(result.data);
-            //     return result;
-            // })
-            // .catch(function (error) {
-            //     console.log("get request on all category failed");
-            // });
         };
 
         service.getItemsForCategory = function(categoryShortName) {
@@ -31,13 +31,13 @@
                 params: {
                     category: categoryShortName
                 }
+            })
+            .then(function(result) {
+                return result;
+            })
+            .catch(function (error) {
+                console.log("get request on all category failed");
             });
-            // .then(function(result) {
-            //     return result;
-            // })
-            // .catch(function (error) {
-            //     console.log("get request on all category failed");
-            // });
         }
     }
-})
+})();

@@ -24,7 +24,9 @@
                 //     return MenuDataService.getAllCategories();
                 // }]
                 categories: ['MenuDataService', function(MenuDataService) {
-                    return MenuDataService.getAllCategories().then(function(response) {
+                    return MenuDataService.getAllCategories()
+                    .then(function(response) {
+                        console.log(response.data);
                         return response.data;
                     });
                 }]
