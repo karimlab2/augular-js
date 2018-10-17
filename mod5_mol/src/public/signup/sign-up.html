@@ -52,7 +52,7 @@
             <br>
 
         <input type="text" name="menuitem" placeholder="Your favorite dish: ex. A1"
-            ng-model="signup.user.menuitem">
+            ng-model="signup.user.menuitem.short_name">
             <!-- validate the menuitem -->
             <span ng-if="!signup.menuitem_valid">No such menu number exists</span>
             <br>
@@ -70,7 +70,7 @@
           </div>
       </form>
     </fieldset>
-<!-- 
+<!--
     <pre>user = {{signup.user | json}}</pre>
     <pre>saved = {{signup.saved_user | json}}</pre> -->
 </div>

@@ -51,10 +51,10 @@
                   <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs"> Menu</a>
               </li>
               <li>
-                <a href="#">
+                <a ui-sref="public.userinfo">
                   <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> My Info</a>
               </li>
-              <li>
+              <li id="navMenuButton" ui-sref-active="active">
                 <a ui-sref="public.signup">
                   <span class="glyphicon glyphicon-certificate"></span><br class="hidden-xs"> Sign Up</a>
               </li>
@@ -134,6 +134,7 @@
     <script src="src/public/menu-item/menu-item.component.js"></script>
     <script src="src/public/signup/sign-up.controller.js"></script>
     <script src="src/public/signup/sign-up.service.js"></script>
+    <script src="src/public/user-info/user-info.controller.js"></script>
 
     <!-- ADMIN SITE -->
 

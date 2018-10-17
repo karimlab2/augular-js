@@ -1,0 +1,45 @@
+<div class="container">
+
+    <div ng-if="userinfo.user_exists">
+        <div class="title">
+            Your preferences
+        </div>
+        <table>
+            <tr>
+                <th>Firstname:</th>
+                <td>{{userinfo.user.firstname}}</td>
+            </tr>
+            <tr>
+                <th>Lastname:</th>
+                <td>{{userinfo.user.lastname}}</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>{{userinfo.user.email}}</td>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td>{{userinfo.user.phone}}</td>
+            </tr>
+            <tr>
+                <th>Your Favorite Dish:</th>
+                <td>{{userinfo.user.menuitem.title}}</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>{{userinfo.user.menuitem.description}}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <img class="img-responsive" width="250" height="150" ng-src="https://victorique-res-server.herokuapp.com/images/{{userinfo.user.menuitem.short_name}}.jpg" alt="{{userinfo.user.menuitem.title}}">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div ng-hide="userinfo.user_exists">
+        Not Signed Up Yet.
+        <a ui-sref="public.signup">Sign up Now!</a>
+    </div>
+</div>

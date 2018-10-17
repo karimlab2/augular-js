@@ -12,11 +12,15 @@
 
         signup.submit = function () {
             console.log(signup.user.menuitem);
-            var promise = signupService.validateMenuItem(signup.user.menuitem);
+            var promise = signupService.validateMenuItem(signup.user.menuitem.short_name);
 
             promise.then( function (response) {
                 console.log("menuitem found");
                 signup.menuitem_valid = true;
+                signup.user.menuitem.title = response.data.name;
+                signup.user.menuitem.short_name = response.data.short_name;
+                signup.user.menuitem.description = response.data.description;
+                console.log(signup.user);
                 signup.saved_user = signupService.saveUser(signup.user);
             })
             .catch(function (error) {
