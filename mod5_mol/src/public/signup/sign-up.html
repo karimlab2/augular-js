@@ -60,13 +60,17 @@
         <button
           ng-disabled="signupForm.$invalid"
           ng-click="signup.submit()">Submit</button>
-
+<!--
           <div style="margin-top: 10px;">
             Form valid? {{ signupForm.$valid }}
+          </div> -->
+
+          <div class="message" ng-if="signupForm.$valid && signup.menuitem_valid">
+              <p>Your information has been saved</p>
           </div>
       </form>
     </fieldset>
-
+<!-- 
     <pre>user = {{signup.user | json}}</pre>
-    <pre>saved = {{signup.saved_user | json}}</pre>
+    <pre>saved = {{signup.saved_user | json}}</pre> -->
 </div>
